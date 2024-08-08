@@ -24,7 +24,7 @@ if auth_type == 'auth':
     auth = Auth()
 if auth_type == 'basic_auth':
     auth = BasicAuth()
-if auth_type == 'SessionAuth':
+if auth_type == 'session_auth':
     auth = SessionAuth()
 if auth_type == 'session_exp_auth':
     auth = SessionExpAuth()
@@ -62,6 +62,7 @@ def authenticate_user():
             '/api/v1/status/',
             '/api/v1/unauthorized/',
             '/api/v1/forbidden/',
+            '/api/v1/auth_session/login/'
         ]
         if auth.require_auth(request.path, excluded_paths):
             user = auth.current_user(request)
