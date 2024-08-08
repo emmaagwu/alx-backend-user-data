@@ -32,7 +32,7 @@ class Auth:
         if request is not None:
             return request.headers.get('Authorization', None)
         return None
-    
+
     def current_user(self, request=None) -> TypeVar('User'):
         """Gets the current user from the request.
         """

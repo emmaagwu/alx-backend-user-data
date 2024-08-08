@@ -11,7 +11,9 @@ from .session_exp_auth import SessionExpAuth
 
 
 class SessionDBAuth(SessionExpAuth):
-    """Handles session authentication with expiration and persistent storage."""
+    """Handles session authentication with expiration and
+    persistent storage.
+    """
 
     def create_session(self, user_id=None) -> str:
         """Generates and saves a session ID for the specified user."""
@@ -39,7 +41,8 @@ class SessionDBAuth(SessionExpAuth):
             return None
 
         session = sessions[0]
-        if datetime.now() > session.created_at + timedelta(seconds=self.session_duration):
+        exp_duration = timedelta(seconds=self.session_duration)
+        if datetime.now() > session.created_at + exp_duration:
             return None
 
         return session.user_id
