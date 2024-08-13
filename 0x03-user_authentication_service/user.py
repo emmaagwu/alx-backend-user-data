@@ -5,13 +5,13 @@ from sqlalchemy import Column, Integer, String
 from sqlalchemy.ext.declarative import declarative_base
 
 
-Base = declaractive_base()
+Base = declarative_base()
 
 
 class User(Base):
     """Represents an entry from the `user` table
     """
-    __table__ = "users"
+    __tablename__ = "users"
     id = Column(Integer, primary_key=True)
     email = Column(String(250), nullable=False)
     hashed_password = Column(String(250), nullable=False)
